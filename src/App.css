@@ -46,3 +46,58 @@
     transform: rotate(360deg);
   }
 }
+
+
+.carousel-image {
+  display: block;
+  height: 87vh;
+  border: 1px white dashed;
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+}
+
+.review-form {
+  align-items: left;
+  text-align: left;
+}
+
+.search-table, .search-table a {
+  color: white;
+}
+
+.search-table {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.search-image {
+  width: 30vw;
+}
+
+.search-details {
+  width: 70vw;
+  /*display: flex;
+  flex-direction: row;
+  align-items: center;*/
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-form > button {
+  height: 100%;
+}
+
+.search-table-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #fff;
+}
+
+.search-rating {
+  margin-left: 20px;
+}
