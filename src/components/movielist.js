@@ -36,7 +36,7 @@ class MovieList extends Component {
 
             return (
                 <Carousel onSelect={this.handleSelect}>
-                    {movieList.map((movie) => (
+                    {movieList.map((movie) => {console.log(movie); return (
                         <Carousel.Item key={movie._id}>
                             <div>
                                 {/* originally linked to movie._id */}
@@ -52,11 +52,11 @@ class MovieList extends Component {
                                 <h3>{movie.title}</h3>
                                 <div>
                                     <h5>{movie.yearReleased}</h5>
-                                    <div><BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(1)}</div>
+                                    <div><BsStarFill glyph={'star'} /> {movie.avgRating ? movie.avgRating.toFixed(1) : 'Not Rated'}</div>
                                 </div>
                             </Carousel.Caption>
                         </Carousel.Item>
-                    ))}
+                    )})}
                 </Carousel>
             );
         };

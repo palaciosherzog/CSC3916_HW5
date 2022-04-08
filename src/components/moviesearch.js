@@ -59,7 +59,7 @@ class MovieSearch extends Component {
                                                 <h5>{movie.yearReleased}</h5>
                                             </div>
                                             <h2>
-                                                <BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(1)}
+                                                <BsStarFill glyph={'star'} /> {movie.avgRating ? movie.avgRating.toFixed(1) : 'Not Rated'}
                                             </h2>
                                         </div>
                                         &nbsp;

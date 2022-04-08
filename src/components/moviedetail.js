@@ -79,7 +79,7 @@ class MovieDetail extends Component {
                                 <b>{actor.actorName}</b> {actor.characterName}
                             </p>)}
                     </ListGroupItem>
-                    <ListGroupItem><h4><BsStarFill/>{this.props.selectedMovie.avgRating.toFixed(2)}</h4></ListGroupItem>
+                    <ListGroupItem><h4><BsStarFill/>{this.props.selectedMovie.avgRating ? this.props.selectedMovie.avgRating.toFixed(1) : 'Not Rated'}</h4></ListGroupItem>
                 </ListGroup>
                     {this.props.selectedMovie.reviews.map((review, i) =>
                         <p key={i}>
