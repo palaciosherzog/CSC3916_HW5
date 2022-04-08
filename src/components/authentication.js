@@ -42,7 +42,7 @@ class Authentication extends Component {
                 { this.state.toggleReg ? <Register /> : <Login /> }
             </div>
         );
-        const userLoggedIn = (<div>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button></div>);
+        const userLoggedIn = (<div className='logged-in-text'>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button></div>);
 
         return (
             <div>

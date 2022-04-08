@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { searchMovies } from '../actions/movieActions';
 import { setMovie } from '../actions/movieActions';
 import { connect } from 'react-redux';
-import { Image, Nav, Form, Button } from 'react-bootstrap';
+import { Image, Nav, Form, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill, BsCardImage, BsSearch } from 'react-icons/bs';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -14,6 +14,11 @@ class MovieSearch extends Component {
         };
         this.updateSearch = this.updateSearch.bind(this);
         this.searchMovies = this.searchMovies.bind(this);
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(searchMovies(''));
     }
 
     handleClick = (movie) => {
@@ -35,40 +40,47 @@ class MovieSearch extends Component {
     render() {
         const MovieSearchList = ({ movieList }) => {
             if (!movieList) {
-                return <div>Loading....</div>;
+                return <div className='loading-div'>Loading....</div>;
             }
 
             return (
-                <div className="search-table">
+                <ListGroup className="search-table">
                     {movieList.map((movie) => (
                         <LinkContainer to={'/movie/' + movie.title} onClick={() => this.handleClick(movie)}>
                             <Nav.Link>
-                                <div className="search-table-row" key={`searchmovie${movie.title}`}>
+                                <ListGroupItem className="search-table-row" key={`searchmovie${movie.title}`}>
                                     <div className="search-image">
                                         {movie.imageUrl ? <Image className="image" src={movie.imageUrl} thumbnail /> : <BsCardImage size="200px" />}
                                     </div>
                                     <div className="search-details">
-                                        <h3>{movie.title}</h3>
-                                        <h5>{movie.yearReleased}</h5>
-                                        <h6>
-                                            <BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(2)}
-                                        </h6>
-                                        Starring:
+                                        <div className="search-header">
+                                            <div>
+                                                <h3>{movie.title}</h3>
+                                                <h5>{movie.yearReleased}</h5>
+                                            </div>
+                                            <h2>
+                                                <BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(1)}
+                                            </h2>
+                                        </div>
+                                        &nbsp;
+                                        <h6>Starring:</h6>
+                                        <div className="search-actors">
                                         {movie.actors.map((actor, i) => (
                                             <p key={i}>{actor.actorName}</p>
                                         ))}
+                                        </div>
                                     </div>
-                                </div>
+                                </ListGroupItem>
                             </Nav.Link>
                         </LinkContainer>
                     ))}
-                </div>
+                </ListGroup>
             );
         };
 
         return (
             <div>
-                <Form className="form-horizontal search-form">
+                <Form className="search-form">
                     <Form.Group controlId="searchText">
                         <Form.Control
                             onChange={this.updateSearch}

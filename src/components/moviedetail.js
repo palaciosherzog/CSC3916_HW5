@@ -60,30 +60,27 @@ class MovieDetail extends Component {
 
     render() {
         if (!this.props.selectedMovie) {
-            return (<div>Loading....</div>);
+            return (<div className="loading-div">Loading....</div>);
         }
 
         return (
             <Card>
-                <Card.Header>Movie Detail</Card.Header>
                 <Card.Body>
                     <div className='movie-image'>
                     {this.props.selectedMovie.imageUrl ? 
                     <Image className="image" src={this.props.selectedMovie.imageUrl} thumbnail /> :
                     <BsCardImage size="200px"/>}
                     </div>
-                </Card.Body>
                 <ListGroup>
-                    <ListGroupItem>{this.props.selectedMovie.title}</ListGroupItem>
+                    <ListGroupItem><h2>{this.props.selectedMovie.title}</h2></ListGroupItem>
                     <ListGroupItem>
                         {this.props.selectedMovie.actors.map((actor, i) =>
                             <p key={i}>
                                 <b>{actor.actorName}</b> {actor.characterName}
                             </p>)}
                     </ListGroupItem>
-                    <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating.toFixed(2)}</h4></ListGroupItem>
+                    <ListGroupItem><h4><BsStarFill/>{this.props.selectedMovie.avgRating.toFixed(2)}</h4></ListGroupItem>
                 </ListGroup>
-                <Card.Body>
                     {this.props.selectedMovie.reviews.map((review, i) =>
                         <p key={i}>
                             <b>{review.username}</b>&nbsp; {review.quote}

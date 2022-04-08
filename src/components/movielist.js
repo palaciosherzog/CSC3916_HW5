@@ -31,7 +31,7 @@ class MovieList extends Component {
     render() {
         const MovieListCarousel = ({ movieList }) => {
             if (!movieList) {
-                return <div>Loading....</div>;
+                return <div className='loading-div'>Loading....</div>;
             }
 
             return (
@@ -43,19 +43,17 @@ class MovieList extends Component {
                                 <LinkContainer to={'/movie/' + movie.title} onClick={() => this.handleClick(movie)}>
                                     <Nav.Link>
                                         <div className="carousel-image">
-                                            {movie.imageUrl ? (
-                                                <Image className="image" src={movie.imageUrl} thumbnail />
-                                            ) : (
-                                                <BsCardImage size="200px" />
-                                            )}
+                                            {movie.imageUrl ? (<Image className="image" src={movie.imageUrl} thumbnail />) : (<BsCardImage size="200px" />)}
                                         </div>
                                     </Nav.Link>
                                 </LinkContainer>
                             </div>
                             <Carousel.Caption>
                                 <h3>{movie.title}</h3>
-                                <h5>{movie.yearReleased}</h5>
-                                <BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(2)}
+                                <div>
+                                    <h5>{movie.yearReleased}</h5>
+                                    <div><BsStarFill glyph={'star'} /> {movie.avgRating.toFixed(1)}</div>
+                                </div>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
