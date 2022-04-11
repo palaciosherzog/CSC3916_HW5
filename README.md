@@ -1,3 +1,21 @@
+# CSC3916_HW5
+
+## React Website Hosted At
+https://hw5-movies.herokuapp.com/
+
+## API for the website is 
+https://github.com/palaciosherzog/CSC3916_HW5_API
+
+## API is Hosted At
+https://hw5-movies-api.herokuapp.com/
+
+### Some implementation notes
+- Right now, if there is a validation error during a post or put, it will return the message from the mongodb error.
+- Titles for movies must be unique. This is because it is what we are using to identify them right now, so I opted for preventing undefined behavior by simply making them unique.
+- The current version allows multiple reviews on the same movie by one person. 
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
